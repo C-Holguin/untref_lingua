@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-8675691.493818, -7796423.758748, -2742861.362489, -2166780.446323], map.getSize());
+map.getView().fit([-10634330.207531, -7511726.229737, -3754872.228644, -2129450.565815], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -70,7 +70,7 @@ closer.onclick = function() {
 };
 var overlayPopup = new ol.Overlay({
     element: container,
-	autoPan: true
+	autoPan: false
 });
 map.addOverlay(overlayPopup)
     
@@ -114,7 +114,7 @@ var featureOverlay = new ol.layer.Vector({
 });
 
 var doHighlight = false;
-var doHover = false;
+var doHover = true;
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
@@ -471,7 +471,7 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 var layerSwitcher = new ol.control.LayerSwitcher({
     activationMode: 'click',
-	startActive: true,
+	startActive: false,
 	tipLabel: "Layers",
     target: 'top-right-container',
 	collapseLabel: '»',
@@ -485,10 +485,6 @@ if (hasTouchScreen || isSmallScreen) {
 		}, 500);
 	});	
 }
-
-
-
-
 
 
 //attribution

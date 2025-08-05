@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>UNTREF LINGUA - Idiomas por Localidad</title>
+
+        <!--Logo para pestañas browser-->
+        <link rel="icon" type = "image/png"  href="images/untref_lingua_LOGO.png">
+
+
+    </head>
+    <body>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+
+        <!-- Selector de Idiomas -->
+        <div id = "language-selector" style = "position:absolute; top: 10px; right: 60px; z-index: 1000; background:white; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+            <label for="languageSelect">Selecione Idioma a representar:</label>
+            <select id="languageSelect">
+                <option value="">-- Seleccione Idioma --</option>
+                <option value="De">Alemán</option>
+                <option value="Ar">Árabe</option>
+                <option value="Ay">Aymara</option>
+                <option value="Cmn">Chino (Mandarín)</option>
+                <option value="Fr">Francés</option>
+                <option value="Gn">Guaraní</option>
+                <option value="En">Inglés</option>
+                <option value="It">Italiano</option>
+                <option value="Arn">Mapundungún</option>
+                <option value="Pt">Portugués</option>
+                <option value="Qu">Quechua</option>
+                <option value="Tob">Toba (Qom)</option>
+                <option value="Wch">Wichí</option>
+            </select>
+        </div>
+
+        <div id="languageLegendContainer" style="position: absolute; bottom: 25px; right: 15px;">
+            <img id="legend_Wch" src="images/ref_IdiomaWichi_1.png" style="display: none;">
+            <img id="legend_Tob" src="images/ref_IdiomaTobaQom_2.png" style="display: none;">
+            <img id="legend_Qu" src="images/ref_IdiomaQuechua_3.png" style="display: none;">
+            <img id="legend_Pt" src="images/ref_IdiomaPortugues_4.png" style="display: none;">
+            <img id="legend_It" src="images/ref_IdiomaItaliano_5.png" style="display: none;">
+            <img id="legend_Gu" src="images/ref_IdiomaGuarani_6.png" style="display: none;">
+            <img id="legend_Fr" src="images/ref_IdiomaFrances_7.png" style="display: none;">
+            <img id="legend_En" src="images/ref_IdiomaIngles_8.png" style="display: none;">
+            <img id="legend_De" src="images/ref_IdiomaAleman_9.png" style="display: none;">
+            <img id="legend_Cmn" src="images/ref_IdiomaChinoMandarin_10.png" style="display: none;">
+            <img id="legend_Ay" src="images/ref_IdiomaAymara_11.png" style="display: none;">
+            <img id="legend_Arn" src="images/ref_IdiomaMapundungun_12.png" style="display: none;">
+            <img id="legend_Ar" src="images/ref_IdiomaArabe_13.png" style="display: none;">
+        </div>
+
+        <script src="resources/qgis2web_expressions.js"></script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+
+        <script src="layers/Sudamericasudamerica_1.js"></script>
+        <script src="layers/Provinciacopiar_2.js"></script>
+        <script src="layers/IdiomaWich_3.js"></script>
+        <script src="layers/IdiomaTobaQom_4.js"></script>
+        <script src="layers/IdiomaQuechua_5.js"></script>
+        <script src="layers/IdiomaPortugus_6.js"></script>
+        <script src="layers/IdiomaItaliano_7.js"></script>
+        <script src="layers/IdiomaGuaran_8.js"></script>
+        <script src="layers/IdiomaFrancs_9.js"></script>
+        <script src="layers/IdiomaIngls_10.js"></script>
+        <script src="layers/IdiomaAlemn_11.js"></script>
+        <script src="layers/IdiomaChinoMandarn_12.js"></script>
+        <script src="layers/IdiomaAymara_13.js"></script>
+        <script src="layers/IdiomaMapundungn_14.js"></script>
+        <script src="layers/Idiomarabe_15.js"></script>
+
+        <script src="layers/localidades_0.js"></script>
+        <script src="layers/Provincias_2.js"></script>
+
+
+        <script src="styles/Sudamericasudamerica_1_style.js"></script>
+        <script src="styles/Provinciacopiar_2_style.js"></script>
+        <script src="styles/IdiomaWich_3_style.js"></script>
+        <script src="styles/IdiomaTobaQom_4_style.js"></script>
+        <script src="styles/IdiomaQuechua_5_style.js"></script>
+        <script src="styles/IdiomaPortugus_6_style.js"></script>
+        <script src="styles/IdiomaItaliano_7_style.js"></script>
+        <script src="styles/IdiomaGuaran_8_style.js"></script>
+        <script src="styles/IdiomaFrancs_9_style.js"></script>
+        <script src="styles/IdiomaIngls_10_style.js"></script>
+        <script src="styles/IdiomaAlemn_11_style.js"></script>
+        <script src="styles/IdiomaChinoMandarn_12_style.js"></script>
+        <script src="styles/IdiomaAymara_13_style.js"></script>
+        <script src="styles/IdiomaMapundungn_14_style.js"></script>
+        <script src="styles/Idiomarabe_15_style.js"></script>
+        <script src="styles/provinciasprovincia_16_style.js"></script>
+
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setupLanguageSelector();
+        });
+        </script>
+
+    </body>
+</html>
